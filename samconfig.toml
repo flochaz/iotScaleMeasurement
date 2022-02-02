@@ -1,0 +1,10 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "scaleMeasurement"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-15hqp0awsxojc"
+s3_prefix = "scaleMeasurement"
+region = "eu-west-1"
+capabilities = "CAPABILITY_IAM"
+image_repositories = []

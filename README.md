@@ -158,3 +158,35 @@ aws cloudformation delete-stack --stack-name scaleMeasurements
 For an introduction to the AWS SAM specification, the AWS SAM CLI, and serverless application concepts, see the [AWS SAM Developer Guide](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html).
 
 Next, you can use the AWS Serverless Application Repository to deploy ready-to-use apps that go beyond Hello World samples and learn how authors developed their applications. For more information, see the [AWS Serverless Application Repository main page](https://aws.amazon.com/serverless/serverlessrepo/) and the [AWS Serverless Application Repository Developer Guide](https://docs.aws.amazon.com/serverlessrepo/latest/devguide/what-is-serverlessrepo.html).
+
+
+## Expected call
+
+
+POST - body
+```
+{
+    “DSN”: SMART_SHELF_DSN,
+    “location_id”: “”
+    “measurements”: […]
+ }
+ Each measurement has the format:
+{
+    “value”: “4.56”,
+    “unit”: “KILOGRAM”,
+    “type”: “Weight”,
+    “timestamp”: “2022-01-23T10:20:30.451Z”
+}
+ In Typescript the types would be:
+ interface PostBodyMeasurement {
+   value: string; // Weight measured
+   unit: string;  // KILOGRAM
+   type: string;  // Weight
+   timestamp: string; // ISO 8601
+}
+interface PostBody {
+   DSN: string; // DSN of the Smart Shelf device
+   location_id: string; // not used
+   measurements: PostBodyMeasurement[];
+}
+```
